@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
-import { Menu, X, Github, Linkedin, Twitter } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Twitter, Sparkles } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,138 +24,102 @@ const Header = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      isScrolled 
+        ? 'bg-white/90 backdrop-blur-md shadow-lg border-b border-blue-100' 
+        : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="text-xl font-light tracking-tight">
-            <span className="font-normal">Piyush</span> Dhyani
+          {/* Enhanced Logo */}
+          <div className="text-xl font-bold tracking-tight cursor-pointer hover:scale-105 transition-transform duration-300">
+            <span className="bg-gradient-to-r from-blue-700 to-emerald-600 bg-clip-text text-transparent">
+              Piyush
+            </span> 
+            <span className="text-slate-700">Dhyani</span>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation with Enhanced Styling */}
           <nav className="hidden md:flex items-center space-x-8 text-sm">
-            <button
-              onClick={() => scrollToSection('home')}
-              className="hover:text-gray-600 transition-colors duration-200"
-            >
-              Home
-            </button>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="hover:text-gray-600 transition-colors duration-200"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="hover:text-gray-600 transition-colors duration-200"
-            >
-              Projects
-            </button>
-            <button
-              onClick={() => scrollToSection('experience')}
-              className="hover:text-gray-600 transition-colors duration-200"
-            >
-              Experience
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="hover:text-gray-600 transition-colors duration-200"
-            >
-              Contact
-            </button>
+            {['home', 'about', 'projects', 'experience', 'contact'].map((section) => (
+              <button
+                key={section}
+                onClick={() => scrollToSection(section)}
+                className="relative text-slate-600 hover:text-blue-700 transition-all duration-300 font-medium capitalize group"
+              >
+                {section}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-emerald-500 transition-all duration-300 group-hover:w-full"></span>
+              </button>
+            ))}
           </nav>
 
-          {/* Social Links & Contact Button */}
+          {/* Enhanced Social Links & Contact Button */}
           <div className="hidden md:flex items-center space-x-4">
             <a
               href="https://github.com/piyushdhyani"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-black transition-colors duration-200"
+              className="w-10 h-10 bg-slate-100 hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 text-slate-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
             >
-              <Github size={18} />
+              <Github size={16} />
             </a>
             <a
               href="https://linkedin.com/in/piyushdhyani"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-black transition-colors duration-200"
+              className="w-10 h-10 bg-slate-100 hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 text-slate-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
             >
-              <Linkedin size={18} />
+              <Linkedin size={16} />
             </a>
             <Button
               onClick={() => scrollToSection('contact')}
-              variant="outline"
               size="sm"
-              className="ml-4"
+              className="bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white border-0 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 rounded-full px-6 font-semibold"
             >
+              <Sparkles className="w-4 h-4 mr-2" />
               Get in Touch
             </Button>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Enhanced Mobile Menu Toggle */}
           <button
-            className="md:hidden text-gray-600 hover:text-black"
+            className="md:hidden w-10 h-10 bg-slate-100 hover:bg-blue-500 text-slate-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Enhanced Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t">
-            <nav className="flex flex-col space-y-4 text-sm">
-              <button
-                onClick={() => scrollToSection('home')}
-                className="text-left hover:text-gray-600 transition-colors duration-200"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => scrollToSection('about')}
-                className="text-left hover:text-gray-600 transition-colors duration-200"
-              >
-                About
-              </button>
-              <button
-                onClick={() => scrollToSection('projects')}
-                className="text-left hover:text-gray-600 transition-colors duration-200"
-              >
-                Projects
-              </button>
-              <button
-                onClick={() => scrollToSection('experience')}
-                className="text-left hover:text-gray-600 transition-colors duration-200"
-              >
-                Experience
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="text-left hover:text-gray-600 transition-colors duration-200"
-              >
-                Contact
-              </button>
+          <div className="md:hidden mt-4 py-6 bg-white/95 backdrop-blur-md rounded-2xl border border-blue-100 shadow-xl animate-slide-down">
+            <nav className="flex flex-col space-y-4 text-sm px-6">
+              {['home', 'about', 'projects', 'experience', 'contact'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className="text-left text-slate-600 hover:text-blue-700 transition-colors duration-300 font-medium capitalize py-2 border-b border-slate-100 hover:border-blue-200"
+                >
+                  {section}
+                </button>
+              ))}
             </nav>
-            <div className="flex items-center space-x-4 mt-4 pt-4 border-t">
+            <div className="flex items-center justify-center space-x-4 mt-6 pt-4 border-t border-slate-200">
               <a
                 href="https://github.com/piyushdhyani"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-black transition-colors duration-200"
+                className="w-10 h-10 bg-slate-100 hover:bg-blue-500 text-slate-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
               >
-                <Github size={18} />
+                <Github size={16} />
               </a>
               <a
                 href="https://linkedin.com/in/piyushdhyani"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-black transition-colors duration-200"
+                className="w-10 h-10 bg-slate-100 hover:bg-blue-500 text-slate-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
               >
-                <Linkedin size={18} />
+                <Linkedin size={16} />
               </a>
             </div>
           </div>

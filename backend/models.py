@@ -29,9 +29,9 @@ class ProjectCreate(BaseModel):
     title: str = Field(..., min_length=2, max_length=100)
     description: str = Field(..., min_length=10, max_length=500)
     technologies: List[str] = Field(..., min_items=1)
-    image: str = Field(..., regex=r'^https?://.+')
-    github: str = Field(..., regex=r'^https://github\.com/.+')
-    demo: str = Field(..., regex=r'^https?://.+')
+    image: str = Field(..., pattern=r'^https?://.+')
+    github: str = Field(..., pattern=r'^https://github\.com/.+')
+    demo: str = Field(..., pattern=r'^https?://.+')
     featured: bool = Field(default=False)
     order: int = Field(default=0)
 

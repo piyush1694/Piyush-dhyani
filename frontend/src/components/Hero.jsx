@@ -10,6 +10,7 @@ const Hero = () => {
   const [isTyping, setIsTyping] = useState(true);
 
   const fullName = personalInfo.name;
+  console.log("Piyush dhyani",fullName)
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);

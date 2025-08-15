@@ -98,7 +98,7 @@ const About = () => {
             <div className="relative animate-slide-left">
               <div className="w-80 h-80 mx-auto rounded-3xl bg-gradient-to-br from-blue-100 to-emerald-100 overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 relative group">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                  src="/profile-photo.jpg"
                   alt="Piyush Dhyani"
                   className="w-full h-full object-cover filter hover:scale-110 transition-transform duration-700"
                 />
